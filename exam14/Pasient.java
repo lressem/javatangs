@@ -15,6 +15,11 @@ public class Pasient extends Person {
 
  	}
 
+ 	public String getdate(){
+
+ 		return date;
+ 	}
+
  	public boolean nyResept( Resept ny){
  		/**
  		*skal ikke implementeres
