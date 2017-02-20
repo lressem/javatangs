@@ -6,19 +6,18 @@ public class Lege extends Person{
    public double tlf;
    public boolean lisens;
    private final int antalResept = 100;
-   public Resept[] = new Resept[antalResept];
+   public Resept rec[] = new Resept[antalResept];
    
-   int countResept; 
+   int countResept=0; 
    
-   public Lege(String n, String a, String adr, double tlf, boolean lisens, Resept[] R){
+   public Lege(String name, String dato, String adr, double tlf, boolean lisens){
        
-       super(navn, fodselsdato);
+       super(name, dato);
        this.adress=adr;
        this.tlf=tlf;
        this.lisens=lisens;
        //count of current number of recepts
-       int countResept = 0;
-       this.Resept = R[antalResept];
+       }
        
        /**
         * fyller ut arrayet med recepter
@@ -26,46 +25,53 @@ public class Lege extends Person{
         */
        
        public String nyResept(Resept r){
-           int i;
-           for(i = countResept; i<=antalResept; i++){
-           R[i]=r;
-           countResept ++;
-           
-       }
+
            if (countResept>=antalResept){
                return "Det er ikke plass til flere recepter";
            }
-           return R[i].toString();
+          rec[countResept]=r;
+          
+           countResept ++;
+           
+    
+           return r.toString();
        }
        
        
        //b
-       public String getLisens(boolean lisens){
-           String responce = " ";
-           
-           if (lisens)
-               responce = "Legen har lisens";
-           if (lisens == false)
-               responce =  "legen har ikke lisens";
-          return responce;
+       public boolean getLisens(){
+           return lisens;
        }
        public String toString(){
-               
-             //metoden retunerer all inforamsjon om resepter som ligger i R[];
-             //metoden er implementert i recept class
+             
+             String str = "Legens navn er " + this.name + " Legens fødselsdato er " + this.dato + "Legens adresse: " + this.adress + "\n" + 
+             "Legens tlf er" + this.tlf + "Legen har lisens: " + this.lisens + "\n";
+
+             String listofReceptstoString ="";
+             
+             String list[] = new String[countResept];
+             for(int i = 0; i<=countResept; i++){
+              listofReceptstoString=listofReceptstoString+rec[i].toString();
+             }
+
+             return str + listofReceptstoString;
        }
        
        //d
        public String utskrevneResepter(){
-         int i=countResept;  
-         if(i==0){
-             return "ingen resepter";
-         }
-         for (i=countResept; i>0; i--){
-             System.out.printl(R[i].toString);
-             i--;
-         }
-         return "end of list";
+
+        if (countResept == 0){
+          return "Legen har ingen utskrevne resepter";
+        }
+         
+        String alleRecepterSomErUtskrevet = "";
+
+        for (int i = countResept-1; i>=0; i--){
+          alleRecepterSomErUtskrevet=alleRecepterSomErUtskrevet+rec[i].toString();
+        }
+
+        return alleRecepterSomErUtskrevet;
+
        }
 
 } 

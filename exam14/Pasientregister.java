@@ -20,6 +20,7 @@ public class Pasientregister{
         /**
          * 
          */
+    
     }
     
     public Pasient finnPasien(String dato, String navn){
@@ -31,17 +32,28 @@ public class Pasientregister{
     //oppgaven
     public Pasient[] finnPasient(String dato)
     {
-        int counter=0;
-        Pasient[] list = new Pasient[counter];
-        //teller hvor mange stemmer med datoen som er inntastet 
-          for(int i = 0; i<pasienter.length; i++){
-              if (pasienter[i].fodselsdato==dato){
-                  counter++;
-                  list[i] = pasienter[i];
-              }
-          }      
+        Pasient[] matchingPasienter = new Pasient [count];
+        Pasient[] foundMatchingforStoring = new Pasient [pasienter.lenght()];
+        int count = 0;
+
+        for (int i = 0; i<=pasienter.length(); i++){
           
-        
+          if(pasienter[i].getDate().equals(dato)){
+            foundMatchingforStoring[i]=pasienter[i];
+            count ++;
+          
+          }
+
+          if(count==0){
+            matchingPasienter=null;
+          }
+        }
+
+        for (int i = 0; i<=count; i++){
+          matchingPasienter[i]=foundMatchingforStoring[i];
+        }
+
+        return matchingPasienter;
         
         
     }
