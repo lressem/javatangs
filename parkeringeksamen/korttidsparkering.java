@@ -43,7 +43,7 @@ public class KorttidsParkering extends Parkering{
 		 int antallTimerToPay = (Math.abs(startTime.getTime()-d.getTime()))/3600000;
 		 avgifToPay=antallTimerToPay*timepris;
 
-		 return avgifToPay;
+		 return avgifToPay+parkeringsbot(d);
 	}
 
 	//kvittering
