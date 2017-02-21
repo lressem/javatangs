@@ -1,12 +1,12 @@
 public class ReisekortSystem{
 	public static final int ANTALL = 100;
 	public static final int UTVIDELSE = 10;
-	private Reisekort[] = reisekortene;
+	private Reisekort[] reisekortene;
 
 	//konstruktøren med dannelse av array med lengde lik antall
-	public ReisekortSystem(Reisekort[ANTALL-1] reisekortene)
+	public ReisekortSystem()
 	{
-		this.reisekortene = reisekortene;
+		this.reisekortene = new Reisekort[ANTALL];
 	}
 
 	//finnReisekort() metoden oppgave 2.a
@@ -26,10 +26,10 @@ public class ReisekortSystem{
 	}
 
 	//utvidArray() metoden oppgave 2.b
-	public void utvidArray(Reisekort[] reisekortene){
+	public void utvidArray(){
 
 			//lager midlertidig array for lagring av data for å kopiere den til den originale 
-			Reisekort[] utviddetArray = new Reisekort[ANTALL+UTVIDELSE-2];
+			Reisekort[] utviddetArray = new Reisekort[ANTALL+UTVIDELSE];
 
 			for (int i = 0; i<reisekortene.length; i++)
 			{
@@ -47,9 +47,9 @@ public class ReisekortSystem{
 		for(int i = 0; i < reisekortene.length; i++)
 		{	
 			//tester om arrayet er fullt
-			if(reisekortene[reisekortene.length-1]!=0)
+			if(reisekortene[reisekortene.length-1]!=null)
 			{
-				utviddetArray(reisekortene);
+				utvidArray();
 			}
 
 			//setter inn på første ledig plass hvis ingen id krasj 
