@@ -7,6 +7,12 @@ QString Scenario::getElementIdFromList(QList<Element> &listofelements, QString &
     for (int row = 0; row < listofelements.count(); row++)
     {
         //create a list of taglists of all elements
+       
+         listsOfTagLists.append(listofelements.at(row).getTags()); <------- get en error here:
+         // //C:\workspace\qtTests\BarWithCLasses\scenario.cpp:37: error: passing 'const Element' as 'this' argument 
+        //discards qualifiers [-fpermissive]
+        
+                                                               ^
         listsOfTagLists.append(listofelements.at(row).getTags());
     }
 
