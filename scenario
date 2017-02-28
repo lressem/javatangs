@@ -1,0 +1,31 @@
+QString Scenario::getElementIdFromList(QList<Element> &listofelements, QString &value)
+{
+    QString valueHere ="";
+    QList<TagList> listsOfTagLists;
+
+    //going through all elements of current scenario
+    for (int row = 0; row < listofelements.count(); row++)
+    {
+        //create a list of taglists of all elements
+        listsOfTagLists.append(listofelements.at(row).getTags());
+    }
+
+    //going through every taglist
+    for (int indx = 0; indx < listsOfTagLists.count(); indx++)
+    {
+        //going through every every tag pair in every taglist
+        for(int i=0; i<listsOfTagLists.at(indx).rowCount(); i++)
+        {
+            //if there is a value in a given tag that corresponds the one we are looking for...
+            if(listsOfTagLists[indx].getValue(i)==value)
+            {
+                qDebug()<<"found what you are looking for";
+                valueHere = value;
+            }
+        }
+    }
+
+    return valueHere;
+    //also needs some kind of highlight on qml side
+
+}
